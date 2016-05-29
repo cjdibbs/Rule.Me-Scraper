@@ -30,6 +30,7 @@ data Recipe = Recipe {
     yield :: String
 } deriving(Show)
 
+openURL :: String -> IO([Tag String])
 openURL x = parseTags <$> (getResponseBody =<< simpleHTTP (getRequest x))
 
 breakfast = PlArray [
@@ -38,6 +39,50 @@ breakfast = PlArray [
         ,("ITEM_TYPE_ID", PlInteger 102)
         ,("NAME", PlString "Breakfast")
         ,("USER_ADDED", PlBool False)
+        ]
+    ]
+    
+dessert = PlArray [
+        PlDict[
+         ("CATEGORY_ID", PlInteger 44)
+        ,("ITEM_TYPE_ID", PlInteger 102)
+        ,("NAME", PlString "Desserts")
+        ,("USER_ADDED", PlBool False)
+        ]
+    ]
+    
+sides = PlArray [
+        PlDict[
+         ("CATEGORY_ID", PlInteger 21)
+        ,("ITEM_TYPE_ID", PlInteger 102)
+        ,("NAME", PlString "Side Dishes")
+        ,("USER_ADDED", PlBool False)
+        ]
+    ]
+condiments = PlArray [
+        PlDict[
+         ("CATEGORY_ID", PlInteger 24)
+        ,("ITEM_TYPE_ID", PlInteger 102)
+        ,("NAME", PlString "Condiments")
+        ,("USER_ADDED", PlBool False)
+        ]
+    ]
+            
+lunch = PlArray [
+        PlDict[
+         ("CATEGORY_ID", PlInteger (-1))
+        ,("ITEM_TYPE_ID", PlInteger 102)
+        ,("NAME", PlString "Lunch")
+        ,("USER_ADDED", PlBool True)
+        ]
+    ]
+ 
+dinner = PlArray [
+        PlDict[
+         ("CATEGORY_ID", PlInteger (-1))
+        ,("ITEM_TYPE_ID", PlInteger 102)
+        ,("NAME", PlString "Dinner")
+        ,("USER_ADDED", PlBool True)
         ]
     ]
     
